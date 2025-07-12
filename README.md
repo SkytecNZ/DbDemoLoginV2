@@ -1,2 +1,2 @@
-# This is a Node Js Project with CRUD operations
-## Used Create, Add, Update & Delete Users & Products
+# This is a Node JS Project with CRUD operations
+## Users & Products - Create, Get, Update & Delete operations
