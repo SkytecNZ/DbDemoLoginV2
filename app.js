@@ -224,15 +224,5 @@ app.post('/updateProduct', function(req, res) {
     
 });
 
-
-
-
-
-
-
-
-
-
-
 app.listen(3001);
 console.log('Node app is running on port 3001');
