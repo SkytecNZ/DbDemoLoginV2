@@ -1,0 +1,53 @@
+
+<%- include('partials/headerLoggedIn.ejs') %>
+
+<h2 style="color:red">Product Management page.</h1>
+
+<p style="color:#f00">
+    Welcome to Product Management Page.
+</p>
+
+
+<h3>All Procuts</h3>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Productname</th>
+        <th>Price</th>
+        <th>Description</th>
+    </tr>
+    <% products.forEach(function(products) { %>
+    <tr>
+        <td><%= products.id %></td>
+        <td><%= products.name %></td>
+        <td><%= parseFloat(products.price).toFixed(2) %></td>
+        <td><%= products.description %></td>
+        <td>
+            <form action="/deleteProduct" method="POST" style="display:inline;">
+                <input type="hidden" name="id" value="<%= products.id %>">
+                <button type="submit">Delete</button>
+            </form>
+            <form action="/updateProduct" method="POST" style="display:inline;">
+                <input type="hidden" name="id" value="<%= products.id%>">
+                <input type="text" name="name" placeholder="New Productname" required>
+                <!-- <input type="number" name="price" placeholder="New Price" required> -->
+                <input type="number" name="price" placeholder="New Price" step="0.01" required />
+                <input type="text" name="description" placeholder="New Description" required>
+                <button type="submit">Update</button>
+            </form>
+        </td>
+    </tr>
+    <% }); %>
+</table>
+
+
+<h3>Add New Product</h3>
+<form action="/addProduct" method="POST">
+    <input type="text" name="name" placeholder="Productname" required />
+    <input type="text" name="price" placeholder="Price" required />
+    <input type="text" name="description" placeholder="Description" required />
+    <button type="submit">Add Product</button>
+</form>
+
+
+</body>

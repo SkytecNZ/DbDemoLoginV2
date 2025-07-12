@@ -1,0 +1,49 @@
+
+<%- include('partials/headerLoggedIn.ejs') %>
+
+<h2 style="color:red">Users Management page.</h1>
+
+<p style="color:#f00">
+    Welcome to User Management Page.
+</p>
+
+
+<h3>All Users</h3>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Password</th>
+        <th>Actions</th>
+    </tr>
+    <% users.forEach(function(user) { %>
+    <tr>
+        <td><%= user.id %></td>
+        <td><%= user.username %></td>
+        <td><%= user.password %></td>
+        <td>
+            <form action="/deleteUser" method="POST" style="display:inline;">
+                <input type="hidden" name="id" value="<%= user.id %>">
+                <button type="submit">Delete</button>
+            </form>
+            <form action="/updateUser" method="POST" style="display:inline;">
+                <input type="hidden" name="id" value="<%= user.id %>">
+                <input type="text" name="username" placeholder="New Username" required>
+                <input type="text" name="password" placeholder="New Password" required>
+                <button type="submit">Update</button>
+            </form>
+        </td>
+    </tr>
+    <% }); %>
+</table>
+
+
+<h3>Add New User</h3>
+<form action="/addUser" method="POST">
+    <input type="text" name="username" placeholder="Username" required />
+    <input type="text" name="password" placeholder="Password" required />
+    <button type="submit">Add User</button>
+</form>
+
+
+</body>
